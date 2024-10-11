@@ -1,0 +1,97 @@
+
+<!-- saved from url=(0011)about:blank -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+      .copy-protection-on #single-article-right,
+      .copy-protection-on {
+        pointer-events: initial !important;
+      }
+      ::-moz-selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+      ::selection {
+        color: #000 !important;
+        background: #accef7 !important;
+      }
+
+      @layer allow-right-click {
+        ::-moz-selection {
+          color: #000 !important;
+          background: #accef7 !important;
+        }
+        ::selection {
+          color: #000 !important;
+          background: #accef7 !important;
+        }
+      }
+    </style></head><body></body><script class="arclck" data-injected="true">document.currentScript.dataset.injected = true;
+  try {
+    let active = true;
+
+    Selection.prototype.removeAllRanges = new Proxy(Selection.prototype.removeAllRanges, {
+      apply(target, self, args) {
+        if (active) {
+          return undefined;
+        }
+        return Reflect.apply(target, self, args);
+      }
+    });
+
+    document.currentScript.addEventListener('remove', () => active = false);
+    document.currentScript.addEventListener('install', () => active = true);
+  }
+  catch (e) {}
+</script><script class="arclck" data-injected="true">document.currentScript.dataset.injected = true;
+  try {
+    const ogs = {
+      removed: false,
+      misc: {}
+    };
+
+    // alert
+    ogs.misc.alert = window.alert;
+    Object.defineProperty(window, 'alert', {
+      get() {
+        return ogs.removed ? ogs.misc.alert : (...args) => console.info('[alert is blocked]', ...args);
+      },
+      set(c) {
+        ogs.misc.alert ||= c;
+      }
+    });
+
+    // unblock contextmenu and more
+    ogs.misc.mp = MouseEvent.prototype.preventDefault;
+    Object.defineProperty(MouseEvent.prototype, 'preventDefault', {
+      get() {
+        return ogs.removed ? ogs.misc.mp : () => {};
+      },
+      set(c) {
+        console.info('a try to overwrite "preventDefault"', c);
+        ogs.misc.mp ||= c;
+      }
+    });
+    Object.defineProperty(MouseEvent.prototype, 'returnValue', {
+      get() {
+        return ogs.removed && 'v' in this ? this.v : true;
+      },
+      set(c) {
+        console.info('a try to overwrite "returnValue"', c);
+        this.v = c;
+      }
+    });
+
+    ogs.misc.cp = ClipboardEvent.prototype.preventDefault;
+    Object.defineProperty(ClipboardEvent.prototype, 'preventDefault', {
+      get() {
+        return ogs.removed ? ogs.misc.cp : () => {};
+      },
+      set(c) {
+        ogs.misc.cp ||= c;
+      }
+    });
+
+    document.currentScript.addEventListener('remove', () => ogs.removed = true);
+    document.currentScript.addEventListener('install', () => ogs.removed = false);
+  }
+  catch (e) {}
+</script></html>

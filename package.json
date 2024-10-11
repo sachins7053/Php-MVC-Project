@@ -1,0 +1,9 @@
+{
+    "name": "skrishna",
+    "version": "1.0.0",
+    "scripts": {
+      "make:controller": "php cli.php generate:controller",
+      "make:model": "php cli.php generate:model"
+    }
+  }
+  

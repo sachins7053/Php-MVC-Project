@@ -1,0 +1,13 @@
+$(window).scroll(function(){if($(this).scrollTop()>100&&window.innerWidth<=992){$('#navbar').addClass('sticky');$('#navbar').css("background","#0c3c63 !important");$('#navbar').css("top","0px");$('.v-center').css("background-color","#0c3c63");$('.v-center').css("padding","0px !important");}else{$('#navbar').removeClass('sticky');$('#navbar').css("top","0px");$('.logo').css("display","block")
+$('#navbar').css("background","rgba(12,60,99,0.6) !important");$('#v-center').css("background","rgba(12, 60, 99, 0.5)")
+$('#trigger').css("background-colorrgba(12, 60, 99, 0.5) !important")
+$('.v-center').css("padding","5px");}});window.scroll({top:$(this).data('y'),left:0,behavior:'smooth'});$(window).scroll(function(){if($(this).scrollTop()>120&&window.innerWidth>992){$('#navbar').addClass('sticky')
+$('#navbar').css("padding","1px")
+$('#navbar').css("background-color","#0c3c63")
+$('#navbar').css("background","#0c3c63")
+$('#navbar').css("z-index","99999")}else{$('#navbar').removeClass('sticky')
+$('#navbar').css("padding","0px")
+$('#navbar').css("background","rgba(12, 60, 99, 0.5) !important")
+$('#navbar').css("background-color","rgba(12, 60, 99, 0.5) !important")
+$('.v-center').css("padding","5px")
+$('.v-center').css("z-index","99999")}});const tab=document.querySelectorAll(".certficate_tab");const toggleTab=function(element){const tabBtn=element.querySelectorAll(".tab-btn");const tabContent=element.querySelectorAll(".tab-content");tabBtn[0].classList.add("tab-open");tabContent[0].classList.add("tab-open");const removeTab=function(element){for(const i of element){i.classList.remove("tab-open");}};const openTab=function(index){removeTab(tabBtn);removeTab(tabContent);tabBtn[index].classList.add("tab-open");tabContent[index].classList.add("tab-open");};tabBtn.forEach((el,i)=>(el.onclick=()=>openTab(i)));};[...tab].forEach((el)=>toggleTab(el));
